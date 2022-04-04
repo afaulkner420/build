@@ -94,6 +94,10 @@ prepare_board() {
 		rockpro64|renegade-elite|pinebook-pro|station-p1)
 			BOARDFAMILY=rk3399
 			;;
+		orangepi3-lts)
+			rfkill unblock all
+			/usr/bin/hciattach_opi -n -s 1500000 /dev/ttyBT0 sprd &
+			;;
 	esac
 	case ${BOARDFAMILY} in
 		cubox|udoo*) # i.MX6 boards: send Ethernet to cpu3, MMC to cpu1/cpu2 (when available)
